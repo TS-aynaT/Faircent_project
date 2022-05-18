@@ -1,0 +1,28 @@
+{
+  "name": "pan_form",
+  "version": "1.0.0",
+  "description": "In this form we'll be saving data of pancard and also we'll be matching the data.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tanya Sharma",
+  "license": "ISC",
+  "dependencies": {
+    "alert": "^5.0.10",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "fs": "^0.0.1-security",
+    "idanalyzer": "^1.2.6",
+    "image-capture": "^0.4.0",
+    "mongoose": "^6.3.2",
+    "multer": "^1.4.4",
+    "mysql": "^2.18.1",
+    "node-tesseract-ocr": "^2.2.1",
+    "node-webcam": "^0.8.0",
+    "nodemon": "^2.0.15",
+    "string-comparison": "^1.1.0",
+    "string-similarity": "^4.0.4"
+  }
+}
