@@ -1,4 +1,0 @@
-"CREATE DATABASE Pan_User;
-"CREATE TABLE  PanData (Sno int not null, PanCard varchar(12), Name varchar(50), FName varchar(50), DOB varchar(20), Primary Key(Sno))";
-
-alter table PanData add column isVerified blob after DOB;
