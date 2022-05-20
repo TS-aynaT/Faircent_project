@@ -46,11 +46,15 @@ const AddDetails = async (user, res) => {
   var fName = user.fatherName;
   var userPan = user.userPan;
   var address = user.address;
+  var emailId = user.emailId;
+  var phoneNum = user.phoneNum;
 
   let panPath = userPan[0].path;
   console.log(panPath, "pathhhhh");
   let details = await readPan(panPath);
   console.log(details, "details from Pancard");
+  var panNum = details.pc;
+  console.log(panNum, "aaaaaaaaaaaaaaaaaaaaaa");
 
   await User.findOne({ Name: name } && { fname: fName }).then(
     async (ifexist) => {
@@ -64,6 +68,9 @@ const AddDetails = async (user, res) => {
         panCard: userPan,
         location: address,
         panDetails: details,
+        phoneNum: phoneNum,
+        emailId: emailId,
+        panNum:panNum
       });
 
       // console.log(panPath);
@@ -94,16 +101,14 @@ const AddImg = async (data, res) => {
 
   var doc = await User.findById(id);
   console.log(doc);
-  var pan_Path = doc.panCard[0].path;
-  var panCard = doc.panDetails.pc;
-  var dob = doc.panDetails.dob;
-
-  console.log(pan_Path, "document");
+  var pan_Path = doc.panCard[0].path; //pancard Path
+  var panCard = doc.panDetails[0].pc; //PanCard Number
   var faceResult = await panAuth.faceread(pan_Path, data.uImg);
-  console.log(faceResult, "jjjjjjjjjjjj");
+  console.log(faceResult, "Face Result");
   console.log("after faceread");
   await toCompareQui(id);
-  return await User.findOneAndUpdate(
+  var dob = doc.panDetails[0].dob;
+  await User.findOneAndUpdate(
     { _id: id },
     {
       faceMatch: faceResult,
@@ -111,7 +116,7 @@ const AddImg = async (data, res) => {
     }
   )
     .then(() => {
-      console.log("here in then");
+      console.log(data);
       return res.status(200).json({
         userId: id,
         pc: panCard,
@@ -133,8 +138,8 @@ const toCompareQui = async (id) => {
   console.log(doc, "data from toCompareQu.....");
   var uname = doc.Name.toLowerCase();
   var fname = doc.fname.toLowerCase();
-  var panName = doc.panDetails.name.toLowerCase();
-  var panfname = doc.panDetails.fname.toLowerCase();
+  var panName = doc.panDetails[0].name.toLowerCase();
+  var panfname = doc.panDetails[0].fname.toLowerCase();
 
   // var luname = uname.toLowerCase()
 

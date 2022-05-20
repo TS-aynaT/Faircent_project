@@ -13,9 +13,20 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  emailId: {
+    type: String,
+    required: true,
+  },
+  phoneNum: {
+    type: String,
+    required: true,
+  },
   panCard: {
     type: Object,
     required: true,
+  },
+  panNum:{
+    type:String
   },
   location: {
     type: String,
@@ -24,7 +35,7 @@ const userSchema = new mongoose.Schema({
     type: String,
   },
   panDetails: {
-    type: Object,
+    type: Array,
   },
   nameCom: {
     type: Number,
@@ -32,9 +43,9 @@ const userSchema = new mongoose.Schema({
   fatherNameCom: {
     type: Number,
   },
-  faceMatch:{
-    type:String
-  }
+  faceMatch: {
+    type: String,
+  },
 });
 
 console.log("in schema");

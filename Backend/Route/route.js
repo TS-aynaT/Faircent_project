@@ -24,8 +24,6 @@ const file = upload.fields([
   { name: "uImg", maxCount: 1 },
 ]);
 
-route.post("/test");
-
 route.post("/Register", file, async (req, res) => {
   console.log("In register");
   const userEntry = {
@@ -33,6 +31,8 @@ route.post("/Register", file, async (req, res) => {
     fatherName: req.body.fatherName,
     userPan: req.files["userPanCard"],
     address: req.body.address,
+    emailId: req.body.emailId,
+    phoneNum: req.body.phoneNum,
   };
 
   console.log(userEntry);
@@ -60,6 +60,16 @@ route.post("/addpic", file, async (req, res) => {
 route.get("/ShowData", (req, res) => {
   console.log("showing");
   User.find({}, (err, result) => {
+    if (err) throw err;
+    res.status(200).send(result);
+  });
+});
+
+route.post("/fetchdata", (req, res) => {
+  var panCard = req.body.pc;
+  console.log(panCard, "req.body");
+
+  User.find({ panNum: panCard }, (err, result) => {
     if (err) throw err;
     res.status(200).send(result);
   });
