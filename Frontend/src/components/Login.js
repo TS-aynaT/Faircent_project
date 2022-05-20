@@ -25,7 +25,7 @@ export default function Login() {
       })
       .then((res) => {
         if (res.status == 201) {
-          navigate("/Dashboard");
+          navigate("/Dashboard/" + `${pc}`);
         }
         console.log("data is being Send");
       })

@@ -59,18 +59,16 @@ const OpenCamera = () => {
 
   const sendImg = async () => {
     const pic = new FormData();
-    console.log(img);
-    console.log(id, "iiiiiiiiiid");
     pic.append("uImg", img);
-
     pic.append("uID", id.id);
-    console.log(pic, "picccccccccc dataaaaaaa");
     await axios
       .post("/addpic", pic)
       .then((res) => {
         var id = res.data.userId;
         var pc = res.data.pc;
         var dob = res.data.dob;
+        console.log(res.data, "dataaaa");
+
         console.log(res.data, "data from frontend");
         if (res.status == 200) {
           navigate("/Dashboard/" + `${pc}`);

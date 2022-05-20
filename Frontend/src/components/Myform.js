@@ -6,6 +6,8 @@ const pdata = {
   uname: "",
   fname: "",
   pc: "",
+  phoneNum: "",
+  emailID: "",
 };
 const locc = {
   add: "",
@@ -16,7 +18,7 @@ const Myform = () => {
   const [state, setState] = useState(pdata);
   const [loc, setLoc] = useState(locc);
 
-  const { uname, fname, pc } = state;
+  const { uname, fname, pc, emailID, phoneNum } = state;
   const { add, pincode } = loc;
 
   const navigate = useNavigate();
@@ -52,12 +54,16 @@ const Myform = () => {
     const name = state.uname;
     const fName = state.fname;
     const address = loc.add + "-" + loc.pincode;
+    const emailID = state.emailID;
+    const phoneNum = state.phoneNum;
 
     const formData = new FormData();
     console.log(state, "In statee");
     formData.append("userName", name);
     formData.append("fatherName", fName);
     formData.append("userPanCard", userPan);
+    formData.append("emailId", emailID);
+    formData.append("phoneNum", phoneNum);
     formData.append("address", address);
 
     await axios
@@ -104,6 +110,24 @@ const Myform = () => {
               value={fname}
               onChange={handleInputChange}
               id="fname"
+            />
+            <label htmlFor="emailID">Enter Your Email ID:</label>
+            <input
+              name="emailID"
+              type="email"
+              className="form-control"
+              value={emailID}
+              onChange={handleInputChange}
+              id="emailID"
+            />
+            <label htmlFor="phoneNum">Enter Your Contact Number:</label>
+            <input
+              name="phoneNum"
+              type="number"
+              className="form-control"
+              value={phoneNum}
+              onChange={handleInputChange}
+              id="phoneNum"
             />
             <label htmlFor="pan">Upload PanCard</label>
             <input
