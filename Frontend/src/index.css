@@ -8,10 +8,11 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background:  url("/home/tanyasharma/project/react_app/public/b1.jpg");
-  background-repeat: no-repeat;
+  background:  url("/home/tanyasharma/Faircent/Faircent_project/Frontend/views/1311077.webp");
+  background-repeat:no-repeat;
   background-size: cover;
-
+  background: linear-gradient(135deg,#9cc8d6, #f8f3ef, );
+  
 
 }
 

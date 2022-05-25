@@ -26,7 +26,10 @@ const readDoc = async (pa) => {
       for (var i = 0; i < rs.length; i++) {
         var re = RegExp("([A-Z]){5}([0-9]){4}([A-Z]){1}");
         if (re.test(rs[i])) {
-          pc = rs[i]; //pancard
+          var t = rs[i]; //pancard
+         let a=t.split(" ");
+         pc=a[0];
+        //  console.log(pc,"panCard");
         }
         if (rs[i].includes("irth")) {
           b = rs[i + 1];

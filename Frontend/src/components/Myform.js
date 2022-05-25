@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
+import UploadIcon from "@mui/icons-material/Upload";
+import MyLocationIcon from "@mui/icons-material/MyLocation";
+import ContactsIcon from "@mui/icons-material/Contacts";
+import EmailIcon from "@mui/icons-material/Email";
+import PersonIcon from "@mui/icons-material/Person";
 const pdata = {
   uname: "",
   fname: "",
@@ -92,7 +96,9 @@ const Myform = () => {
                 <h3> Sign In</h3>
               </center>
             </div>
-            <label htmlFor="name">Enter Your Name:</label>
+            <label htmlFor="name">
+              <PersonIcon /> Name:
+            </label>
             <input
               name="uname"
               type="text"
@@ -102,7 +108,9 @@ const Myform = () => {
               id="name"
               // onSubmit={handleInputs}
             />
-            <label htmlFor="fname">Enter Your Father's name:</label>
+            <label htmlFor="fname">
+              <PersonIcon /> Father's name:
+            </label>
             <input
               name="fname"
               type="text"
@@ -111,7 +119,10 @@ const Myform = () => {
               onChange={handleInputChange}
               id="fname"
             />
-            <label htmlFor="emailID">Enter Your Email ID:</label>
+            <label htmlFor="emailID">
+              <EmailIcon />
+              Email ID:
+            </label>
             <input
               name="emailID"
               type="email"
@@ -120,7 +131,10 @@ const Myform = () => {
               onChange={handleInputChange}
               id="emailID"
             />
-            <label htmlFor="phoneNum">Enter Your Contact Number:</label>
+            <label htmlFor="phoneNum">
+              <ContactsIcon /> Contact Number:
+            </label>
+
             <input
               name="phoneNum"
               type="number"
@@ -129,7 +143,10 @@ const Myform = () => {
               onChange={handleInputChange}
               id="phoneNum"
             />
-            <label htmlFor="pan">Upload PanCard</label>
+            <label htmlFor="pan">
+              <UploadIcon />
+              PanCard
+            </label>
             <input
               type="file"
               className="form-control"
@@ -138,7 +155,9 @@ const Myform = () => {
               onChange={handleInputChange}
             />
 
-            <label htmlFor="location">Fetch Location</label>
+            <label htmlFor="location">
+              Fetch Location <MyLocationIcon />
+            </label>
             <div id="loc">
               <div className="row">
                 <div className="col-md-9">

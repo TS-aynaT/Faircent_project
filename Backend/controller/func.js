@@ -6,39 +6,39 @@ require("../model/conn");
 const string_com = require("string-similarity");
 const User = require("../model/mongoUser");
 
-const checkData = (data, res) => {
-  console.log("in search log");
-  console.log(data);
-  var s1 = "select count(Sno) as len from PanData";
-  con.query(s1, (err, result1) => {
-    if (err) throw err;
-    var len = result1[0].len;
-    console.log(len, "length");
-    var sql = "select PanCard, DOB from PanData";
-    con.query(sql, (err, result) => {
-      if (err) throw err;
-      var found = 0;
-      for (var i = 0; i < len; i++) {
-        if (
-          result[i].PanCard === data.panCard &&
-          result[i].DOB === data.passWord
-        ) {
-          found = 1;
-          console.log("found match");
-          break;
-        }
-      }
-      if (found == 1) {
-        console.log("found");
-        res.status(201).json("Found");
-      } else {
-        console.log(found);
-        console.log("Not Verified");
-        res.status(401).json("Not Found");
-      }
-    });
-  });
-};
+// const checkData = (data, res) => {
+//   console.log("in search log");
+//   console.log(data);
+//   var s1 = "select count(Sno) as len from PanData";
+//   con.query(s1, (err, result1) => {
+//     if (err) throw err;
+//     var len = result1[0].len;
+//     console.log(len, "length");
+//     var sql = "select PanCard, DOB from PanData";
+//     con.query(sql, (err, result) => {
+//       if (err) throw err;
+//       var found = 0;
+//       for (var i = 0; i < len; i++) {
+//         if (
+//           result[i].PanCard === data.panCard &&
+//           result[i].DOB === data.passWord
+//         ) {
+//           found = 1;
+//           console.log("found match");
+//           break;
+//         }
+//       }
+//       if (found == 1) {
+//         console.log("found");
+//         res.status(201).json("Found");
+//       } else {
+//         console.log(found);
+//         console.log("Not Verified");
+//         res.status(401).json("Not Found");
+//       }
+//     });
+//   });
+// };
 
 const AddDetails = async (user, res) => {
   // const { name, fatherName, panCard } = user;
@@ -163,4 +163,4 @@ const toCompareQui = async (id) => {
       console.log(err);
     });
 };
-module.exports = { AddImg, checkData, AddDetails };
+module.exports = { AddImg, AddDetails };

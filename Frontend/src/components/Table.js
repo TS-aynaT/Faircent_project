@@ -1,21 +1,23 @@
 import React, { useState, useEffect } from "react";
-// import { useNavigate } from "react-router-dom";
-import nv from "./nv.gif";
-import verified from "./vc.gif";
+import { useNavigate } from "react-router-dom";
 
 const Table = () => {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const [Pdata, setPdata] = useState([]);
   const arr = [];
-  const [img, setImg] = useState("");
-  const [pan, setPan] = useState("");
+  // const [img, setImg] = useState("");
+  // const [pan, setPan] = useState("");
 
   // const sendPan = () => {
   //   navigate("/Details");
   // };
 
+  useEffect(() => {
+    loadData();
+  }, []);
+
   const loadData = async () => {
-    const res = await fetch("http://localhost:3005/table");
+    const res = await fetch("http://localhost:3005/ShowData");
     const getdata = await res.json();
     setPdata(getdata);
 
@@ -23,21 +25,22 @@ const Table = () => {
 
     let len = Object.getOwnPropertyNames(getdata);
     for (let i = 0; i < len.length - 1; i++) {
-      arr.push(getdata[i].Authorized_By);
-      if (arr[i].includes("true")) {
-        let pc = getdata[i].PanCard;
-        console.log(pc);
-        setPan(pc);
-        setImg(verified);
-      } else {
-        setImg(nv);
-      }
+      arr.push(getdata[i].panNum);
+      // setPan(arr[i]);
+      console.log(arr[i], "pan in panset" + i);
     }
   };
 
-  useEffect(() => {
-    loadData();
-  }, []);
+  // const onDashboard = (pc) => {
+  //   let len = Object.getOwnPropertyNames(Pdata);
+  //   for (var i = 0; i < len.length; i++) {
+  //     if (pc == pan[i]) {
+  //       navigate("/Dashboard/" + `${pc}`);
+  //     } else {
+  //       console.log("in else");
+  //     }
+  //   }
+  // };
 
   return (
     <div className="container">
@@ -48,30 +51,23 @@ const Table = () => {
             <td>PanCard</td>
             <td>Name</td>
             <td>FName</td>
-            <td>DOB</td>
-            <td>Authorized_By</td>
             <td>Link</td>
           </tr>
         </thead>
         <tbody className="bg-white">
           {Pdata.map((pda) => (
             <tr key={pda.Sno}>
-              <td>{pda.Sno}</td>
-              <td>{pda.PanCard}</td>
+              <td>{pda._id}</td>
+              <td>{pda.panNum}</td>
               <td>{pda.Name}</td>
-              <td>{pda.FName}</td>
-              <td>{pda.DOB}</td>
+              <td>{pda.fname}</td>
               <td>
-                <img id="img" src={img} alt=""></img>
-              </td>
-              <td>
-                <a
-                  href="http://localhost:3000/Dashboard"
-                  type="submit"
+                <button
+                  // onclick={onDashboard(pda.panNum)}
                   className="btn btn-primary"
                 >
-                  View Profile
-                </a>
+                  ShowData
+                </button>
               </td>
             </tr>
           ))}

@@ -1,8 +1,14 @@
 import { NavLink } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import nv from "./faircent-logo.png";
 export default function Navbar() {
+  const navigate = useNavigate;
+  const navme = () => {
+    navigate("/");
+  };
+
   return (
     <NavLink
       className="navbar navbar-light bg-light justify-content-between"
@@ -17,7 +23,11 @@ export default function Navbar() {
       />
 
       <form className="form-inline">
-        <button className="btn btn-outline-primary my-2 my-sm-0" type="submit">
+        <button
+          onClick={navme}
+          className="btn btn-outline-primary my-2 my-sm-0"
+          type="submit"
+        >
           Sign out
         </button>
       </form>

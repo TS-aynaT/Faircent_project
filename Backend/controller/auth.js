@@ -44,4 +44,13 @@ const faceread = async (panPath, pic) => {
     });
 };
 
-module.exports = { faceread };
+const loginAdmin = (uid,upass) =>{
+var id="Admin";
+var pass = "pass@123"
+if(uid==id && pass==upass)
+return "true";
+else
+return "false";
+}
+
+module.exports = { faceread, loginAdmin };

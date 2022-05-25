@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "./Navbar";
 import axios from "axios";
+import jsPDF from "jspdf";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useParams } from "react-router-dom";
 // import {Image} from "react-native";
@@ -33,6 +34,7 @@ export default function DashBoard() {
   //     });
 
   // };
+  var data = "";
 
   const findPan = async () => {
     await axios
@@ -41,6 +43,8 @@ export default function DashBoard() {
         console.log(res.data, "data from axios");
 
         var d = res.data;
+        data = d;
+
         setDetails(d);
         console.log("data is updates", details);
       })
@@ -48,6 +52,22 @@ export default function DashBoard() {
         console.log(err);
       });
     setIsVisible(true);
+  };
+  const createPdf = () => {
+    console.log(details, "deails in create pdf");
+    var doc = new jsPDF("p", "pt", "a4");
+    doc.html(
+      document.querySelector(".dashboard", {
+        callback: function (pdf) {
+          pdf.save("result.pdf");
+        },
+      })
+    );
+    // axios.post("/getpdf",details)
+    // .then(()=>{
+    //   axios.get("savepdf",{responseType:"blob"})
+    //   .then();
+    // });
   };
 
   return (
@@ -70,7 +90,10 @@ export default function DashBoard() {
               </ul> */}
                 <div className="row border mt-2">
                   <div className="col-md-12 mt-2 mb-2 Display 3">
-                    <label>Name: {details[0].Name}</label>
+                    <label>
+                      <i class="bi bi-person" />
+                      Name: {details[0].Name}
+                    </label>
                   </div>
                 </div>
                 <div className="row border Display 3 mt-2 mb-2">
@@ -173,7 +196,9 @@ export default function DashBoard() {
             </div>
           </div>
           <center>
-            <button className="btn btn-primary mt-3 mb-0">Print</button>
+            <button onClick={createPdf} className="btn btn-primary mt-3 mb-0">
+              Print
+            </button>
           </center>
         </div>
       ) : null}
