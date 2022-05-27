@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import Pagination from "@material-ui/lab/Pagination";
 
 const Table = () => {
   const navigate = useNavigate();
@@ -31,21 +32,20 @@ const Table = () => {
     }
   };
 
-  // const onDashboard = (pc) => {
-  //   let len = Object.getOwnPropertyNames(Pdata);
-  //   for (var i = 0; i < len.length; i++) {
-  //     if (pc == pan[i]) {
-  //       navigate("/Dashboard/" + `${pc}`);
-  //     } else {
-  //       console.log("in else");
-  //     }
-  //   }
-  // };
+  const onDashboard = () => {
+    // let len = Object.getOwnPropertyNames(arr);
+    // console.log(len, "kekeke");
+    // console.log(pc, "hhjkkk");
+    console.log("in funccccccc");
+  };
 
   return (
-    <div className="container">
-      <table className="table table-bordered text-black mt-5">
-        <thead className=" table thead-dark">
+    <div className="container border">
+      <center>
+        <h3 className=" mb-2 mt-2 border">Details</h3>
+      </center>
+      <table className="table mt-2 tabledata">
+        <thead className=" table">
           <tr>
             <td>Sno</td>
             <td>PanCard</td>
@@ -54,25 +54,21 @@ const Table = () => {
             <td>Link</td>
           </tr>
         </thead>
-        <tbody className="bg-white">
+        <tbody className="border">
           {Pdata.map((pda) => (
             <tr key={pda.Sno}>
               <td>{pda._id}</td>
               <td>{pda.panNum}</td>
               <td>{pda.Name}</td>
               <td>{pda.fname}</td>
-              <td>
-                <button
-                  // onclick={onDashboard(pda.panNum)}
-                  className="btn btn-primary"
-                >
-                  ShowData
-                </button>
-              </td>
+              {/* <td>
+               
+              </td> */}
             </tr>
           ))}
         </tbody>
       </table>
+      <Pagination count={3} className="border" />
     </div>
   );
 };

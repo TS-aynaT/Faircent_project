@@ -54,9 +54,8 @@ const AddDetails = async (user, res) => {
   let details = await readPan(panPath);
   console.log(details, "details from Pancard");
   var panNum = details.pc;
-  console.log(panNum, "aaaaaaaaaaaaaaaaaaaaaa");
 
-  await User.findOne({ Name: name } && { fname: fName }).then(
+  await User.findOne( {panNum:panNum}).then(
     async (ifexist) => {
       if (ifexist) return res.status(404).json("user Exists ");
 

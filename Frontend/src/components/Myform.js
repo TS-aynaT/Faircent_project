@@ -96,7 +96,7 @@ const Myform = () => {
                 <h3> Sign In</h3>
               </center>
             </div>
-            <label htmlFor="name">
+            <label className="mb-2" htmlFor="name">
               <PersonIcon /> Name:
             </label>
             <input
@@ -108,7 +108,7 @@ const Myform = () => {
               id="name"
               // onSubmit={handleInputs}
             />
-            <label htmlFor="fname">
+            <label className="mb-2 mt-2" htmlFor="fname">
               <PersonIcon /> Father's name:
             </label>
             <input
@@ -119,7 +119,7 @@ const Myform = () => {
               onChange={handleInputChange}
               id="fname"
             />
-            <label htmlFor="emailID">
+            <label className="mb-2 mt-2" htmlFor="emailID">
               <EmailIcon />
               Email ID:
             </label>
@@ -131,7 +131,7 @@ const Myform = () => {
               onChange={handleInputChange}
               id="emailID"
             />
-            <label htmlFor="phoneNum">
+            <label className="mb-2 mt-2" htmlFor="phoneNum">
               <ContactsIcon /> Contact Number:
             </label>
 
@@ -143,7 +143,7 @@ const Myform = () => {
               onChange={handleInputChange}
               id="phoneNum"
             />
-            <label htmlFor="pan">
+            <label className="mb-2 mt-2" htmlFor="pan">
               <UploadIcon />
               PanCard
             </label>
@@ -155,7 +155,7 @@ const Myform = () => {
               onChange={handleInputChange}
             />
 
-            <label htmlFor="location">
+            <label className="mb-3 mt-3" htmlFor="location">
               Fetch Location <MyLocationIcon />
             </label>
             <div id="loc">

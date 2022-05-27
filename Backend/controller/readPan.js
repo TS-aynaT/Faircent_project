@@ -17,7 +17,6 @@ const readDoc = async (pa) => {
 
       for (var i = 0; i < rs.length; i++) {
         if (rs[i] == "" || rs[i] == " " || rs[i] == "  " || rs[i] == "   ") {
-          // console.log(rs[i], i);
           rs.splice(i, 1);
           i--;
         }
@@ -42,21 +41,6 @@ const readDoc = async (pa) => {
         }
       }
       return { pc, dob, name, fname };
-
-      //   var d = await authr.isVerified(pa);
-      //   console.log(d);
-      //   if (d == "true") {
-      //     var sql =
-      //       "Insert into PanData (PanCard,Name,FName,DOB,Authorized_By) values (?,?,?,?,?)";
-      //     con.query(sql, [pc, name, fname, dob, d], (err) => {
-      //       if (err) throw err;
-      //       console.log("Data Added");
-      //     });
-      //     return "true";
-      //   } else {
-      //     console.log("false");
-      //     return "false";
-      //   }
     })
     .catch((error) => {
       console.log(error.message);
